@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+
+html {
+    top: 0 !important;
+}
+
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', 'Poppins', "Helvetica Neue", sans-serif;
+}
+
+.flex {
+    display: flex;
+}
+
+.direction-col {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.spaceBtw {
+    justify-content: space-between;
+}
+
+.spaceAround {
+    justify-content: space-around;
+}
+
+.spaceEven {
+    justify-content: space-evenly;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

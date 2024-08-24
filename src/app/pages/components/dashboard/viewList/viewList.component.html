@@ -1,0 +1,16 @@
+<div class="card-container flex spaceBtw" *ngIf="listArray.length>0">
+    <div class="show-list" *ngFor="let data of listArray" [class.selectedCat]="data.selected">
+        <h3>{{data.title}} <i class="fa-solid fa-star"></i> </h3>
+        <img src="{{data.image}}" width="100px" height="100px" />
+        <p>{{data.description}}</p>
+        <p> {{ "Rating: "+ data.rating.rate}} </p>
+        <div class="flex buy-div">
+            <p>Price: ${{data.price}}</p>
+            <button>Buy now</button>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="listArray.length==0">
+    <p class="no-data">No Data</p>
+</ng-container>

@@ -1,0 +1,31 @@
+<div class="flex spaceBtw parent-div">
+    <div class="list-view">
+        <div class="btn-list" *ngFor="let list of dashboardService.categoryList" [class.filter-selected]="dashboardService.selectedCategory==list" (click)="dashboardService.selectedCategory!=list && getAllProducts(list)">
+            {{list | titlecase }}
+        </div>
+        <hr>
+        <div class="flex filter-div">
+            <p>Prices </p>
+            <button [class.filter-selected]="dashboardService.filtersProducts.price=='Low'" (click)="changeProductFilter({event:'price',value:'Low'})">Low to High</button>
+            <button [class.filter-selected]="dashboardService.filtersProducts.price=='High'" (click)="changeProductFilter({event:'price',value:'High'})">High to Low</button>
+        </div>
+
+        <div class="flex filter-div" *ngIf="dashboardService.selectedCategory=='All categories'">
+            <p>Sort based on Discounts </p>
+            <button [class.filter-selected]="dashboardService.filtersProducts.discount=='Low'" (click)="changeProductFilter({event:'discount',value:'Low'})">Low to High</button>
+            <button [class.filter-selected]="dashboardService.filtersProducts.discount=='High'" (click)="changeProductFilter({event:'discount',value:'High'})">High to Low</button>
+        </div>
+
+        <div class="flex range-filter direction-col">
+            <p>The price ranges from ( ${{dashboardService.filtersProducts.min + ' - $' + dashboardService.filtersProducts.max}}) </p>
+            <p>Selected Range = ${{slider1.value + ' - $' +slider2.value}} </p>
+            <mat-slider [(ngModel)]="dashboardService.filtersProducts.startRange" min="{{dashboardService.filtersProducts.min}}" max="{{dashboardService.filtersProducts.max}}" #slider1 (ngModelChange)="changePriceRange()"></mat-slider>
+            <mat-slider [(ngModel)]="dashboardService.filtersProducts.endRange" min="{{dashboardService.filtersProducts.min}}" max="{{dashboardService.filtersProducts.max}}" #slider2 (ngModelChange)="changePriceRange()"></mat-slider>
+        </div>
+
+    </div>
+    <div [class.loader-screen]="showLoader">
+        <mat-spinner diameter="25" class="loading-spinner" *ngIf="showLoader"></mat-spinner>
+        <view-list [listArray]="dashboardService.allProducts"></view-list>
+    </div>
+</div>

@@ -10,26 +10,26 @@ export class DashboardService {
   selectedCategory = 'All categories';
 
   // initial discounted categry
-  discountMap = new Map([[ "jewelery", 10 ],["men's clothing", 30]])
+  discountMap = new Map([['jewelery', 10], ["men's clothing", 30]])
 
   //  value which can be assigned - Low | High for price
   filtersProducts = {
-    price : '',
-    discount : '',
-    min:0,
-    max:0,
-    startRange : 0,
-    endRange : 0
+    price: '',
+    discount: '',
+    min: 0,
+    max: 0,
+    startRange: 0,
+    endRange: 0
   }
 
   constructor(private http: HttpClient) {}
 
   // get category list
-  getAllCategory(){
+  getAllCategory() {
     return this.http.get(`https://fakestoreapi.com/products/categories`);
   }
 
-  getProductList(endpoint){
+  getProductList(endpoint) {
     return this.http.get(`https://fakestoreapi.com/products${endpoint}`);
   }
 

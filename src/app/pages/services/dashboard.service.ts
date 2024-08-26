@@ -22,10 +22,7 @@ export class DashboardService {
     endRange : 0
   }
 
-  constructor(private http: HttpClient) {
-    this.discountMap
-    debugger
-  }
+  constructor(private http: HttpClient) {}
 
   // get category list
   getAllCategory(){

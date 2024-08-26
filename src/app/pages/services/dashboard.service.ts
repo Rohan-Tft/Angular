@@ -10,7 +10,7 @@ export class DashboardService {
   selectedCategory = 'All categories';
 
   // initial discounted categry
-  discountMap = new Map([[ 'jewelery', 10 ],['electronics', 30]])
+  discountMap = new Map([[ "jewelery", 10 ],["men's clothing", 30]])
 
   //  value which can be assigned - Low | High for price
   filtersProducts = {

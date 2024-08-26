@@ -32,7 +32,6 @@ export class DashboardComponent implements OnInit{
       // check for array
       if(Array.isArray(res)){
         this.dashboardService.categoryList = [...this.dashboardService.categoryList,...res];
-        // this.resetFilter();
       }
     }, err => {
       console.log(err);
@@ -66,25 +65,36 @@ export class DashboardComponent implements OnInit{
   changeProductFilter(filterObject){
     if(!filterObject.value) return;
     // change filter value and sort in ass or desc order
-    this.selectedSortFilter = filterObject.event
-    this.dashboardService.filtersProducts[this.selectedSortFilter] = filterObject.value;
+    const { event , value } = filterObject
+    this.dashboardService.filtersProducts[event] = value;
     // sort for price
-    if(filterObject.event=='price'){
-      this.dashboardService.allProducts.sort((data1,data2)=> filterObject.value == 'Low' ? data1.price - data2.price : data2.price - data1.price)
+    if(event=='price'){
+      this.sortProductsByPrice(value);
       // reset discount sort
       this.dashboardService.filtersProducts.discount = '';
     }
     // sort for discount
-    if(filterObject.event=='discount'){
-      this.dashboardService.allProducts.sort((data1,data2)=>{
-          // check discount map and return 0 if not present
-          let discountA = this.dashboardService.discountMap.get(data1.category) || 0;
-          let discountB = this.dashboardService.discountMap.get(data2.category) || 0;
-          return filterObject.value == 'Low' ? discountA - discountB : discountB - discountA
-      })
+    if(event=='discount'){
+      this.sortProductsByDiscounts(value);
       // reset pricing sort
       this.dashboardService.filtersProducts.price = '';
     }
+  }
+
+
+  // sort for price
+  sortProductsByPrice(value){
+    this.dashboardService.allProducts.sort((data1,data2)=> value == 'Low' ? data1.price - data2.price : data2.price - data1.price)
+  }
+
+  // sort for discounts
+  sortProductsByDiscounts(value){
+    this.dashboardService.allProducts.sort((data1,data2)=>{
+      // check discount map and return 0 if not present
+      let discountA = this.dashboardService.discountMap.get(data1.category) || 0;
+      let discountB = this.dashboardService.discountMap.get(data2.category) || 0;
+      return value == 'Low' ? discountA - discountB : discountB - discountA
+    })
   }
 
 

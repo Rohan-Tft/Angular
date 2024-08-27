@@ -66,6 +66,7 @@ export class DashboardComponent implements OnInit{
     if(!filterObject.value) return;
     // change filter value and sort in ass or desc order
     const { event , value } = filterObject
+    this.selectedSortFilter = filterObject.event;
     this.dashboardService.filtersProducts[event] = value;
     // sort for price
     if(event=='price'){

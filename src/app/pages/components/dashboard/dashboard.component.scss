@@ -34,6 +34,9 @@
         background: white;
         color: black;
         border: 1px solid;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .btn-list:hover {
         background: #282828;

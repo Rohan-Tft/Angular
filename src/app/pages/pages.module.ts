@@ -1,11 +1,11 @@
 import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LandingPageComponent } from './pages/components/landingPage/landing-page.component';
+import { LandingPageComponent } from './components/landingPage/landing-page.component';
 import { PageRoutingModule } from './page-routing.module';
-import { DashboardService } from './pages/services/dashboard.service';
-import { DashboardComponent } from './pages/components/dashboard/dashboard.component';
-import { ViewlistComponent } from './pages/components/dashboard/viewList/viewList.component';
-import { MaterialModule } from './material/material.module';
+import { DashboardService } from './services/dashboard.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ViewlistComponent } from './components/dashboard/viewList/viewList.component';
+import { MaterialModule } from '../material/material.module';
 import { FormsModule } from '@angular/forms';
 
 
